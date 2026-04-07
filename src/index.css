@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.highlighted-date {
+  background-color: #07b81e !important; /* Yellow background */
+  color: #000 !important; /* Black text */
+  border-radius: 50%;
+}

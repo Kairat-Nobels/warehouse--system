@@ -1,0 +1,134 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.react-datepicker__time-container {
+  width: 180px !important;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
+a {
+  text-decoration: none !important;
+}
+
+.doctor-modal input:focus,
+.doctor-modal input:active,
+.doctor-modal input:hover {
+  border: none !important;
+  outline: none !important;
+  background-color: #f2f2f2;
+  box-shadow: none !important;
+}
+
+.doctor-modal img {
+  max-width: 350px;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.doctor-modal .rs-modal-body {
+  overflow-x: hidden !important;
+}
+
+.doctor-modal__img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.doctor-modal__img input {
+  width: 450px;
+  max-width: 450px;
+}
+
+.doctor-modal__form .rs-form-group {
+  width: 450px !important;
+}
+
+.doctor-modal__textarea {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+}
+
+.doctor-modal .rs-modal-body {
+  overflow-x: hidden !important;
+}
+
+.doctor-modal__img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.doctor-modal__img input {
+  width: 450px;
+  max-width: 450px;
+}
+
+.doctor-modal__form .rs-form-group {
+  width: 450px;
+}
+
+.doctor-modal__form {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.logout-button {
+  background-color: none !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  padding: 5px 10px !important;
+  border-radius: 5px !important;
+}
+
+.logout-button:hover {
+  color: #fff !important;
+  background-color: none !important;
+}
