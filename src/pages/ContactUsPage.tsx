@@ -24,7 +24,7 @@ const ContactUsPage = () => {
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 text-center">
             <Phone className="w-8 h-8 mx-auto text-cyan-400" />
             <h3 className="mt-4 text-xl font-semibold">Телефон</h3>
-            <p className="text-slate-400 mt-2">+996 (700) 123 456</p>
+            <p className="text-slate-400 mt-2">+996 509 788 080</p>
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 text-center">
@@ -36,7 +36,7 @@ const ContactUsPage = () => {
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 text-center">
             <MapPin className="w-8 h-8 mx-auto text-amber-400" />
             <h3 className="mt-4 text-xl font-semibold">Адрес</h3>
-            <p className="text-slate-400 mt-2">Бишкек, Кыргызстан</p>
+            <p className="text-slate-400 mt-2">7 апреля 3Б, г. Бишкек, Кыргызстан</p>
           </div>
         </div>
       </section>
