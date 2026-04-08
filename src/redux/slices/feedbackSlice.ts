@@ -97,7 +97,7 @@ const feedbackSlice = createSlice({
         state.feedback.unshift(action.payload);
         toast.success("Сообщение успешно отправлено");
       })
-      .addCase(createFeedback.rejected, (state, action: any) => {
+      .addCase(createFeedback.rejected, (action: any) => {
         toast.error(action.payload || "Ошибка отправки сообщения");
       })
 
@@ -107,7 +107,7 @@ const feedbackSlice = createSlice({
         );
         toast.success("Сообщение удалено");
       })
-      .addCase(deleteFeedback.rejected, (state, action: any) => {
+      .addCase(deleteFeedback.rejected, (action: any) => {
         toast.error(action.payload || "Ошибка удаления сообщения");
       });
   },

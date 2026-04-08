@@ -107,7 +107,7 @@ const categoriesSlice = createSlice({
         state.categories.unshift(action.payload);
         toast.success("Категория успешно добавлена");
       })
-      .addCase(createCategory.rejected, (state, action: any) => {
+      .addCase(createCategory.rejected, (action: any) => {
         toast.error(action.payload || "Ошибка создания категории");
       })
 
@@ -117,7 +117,7 @@ const categoriesSlice = createSlice({
         );
         toast.success("Категория успешно обновлена");
       })
-      .addCase(updateCategory.rejected, (state, action: any) => {
+      .addCase(updateCategory.rejected, (action: any) => {
         toast.error(action.payload || "Ошибка обновления категории");
       })
 
@@ -127,7 +127,7 @@ const categoriesSlice = createSlice({
         );
         toast.success("Категория успешно удалена");
       })
-      .addCase(deleteCategory.rejected, (state, action: any) => {
+      .addCase(deleteCategory.rejected, (action: any) => {
         toast.error(action.payload || "Ошибка удаления категории");
       });
   },
