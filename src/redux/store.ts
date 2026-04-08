@@ -1,22 +1,23 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-// import servicesReducer from "../slices/servicesSlice";
-// import recordsReducer from "../slices/recordSlice";
-// import doctorsReducer from "../slices/doctorsSlice";
-import reviewsReducer from "./slices/reviewsSlice";
-import roomsReducer from "./slices/roomsSlice";
-import bookingsReducer from "./slices/bookingsSlice";
+import { configureStore } from "@reduxjs/toolkit";
 import adminReducer from "./slices/adminSlice";
-// import adminReducer from "../slices/adminSlice";
+import productsReducer from "./slices/productsSlice";
+import categoriesReducer from "./slices/categoriesSlice";
+import suppliersReducer from "./slices/suppliersSlice";
+import receiptsReducer from "./slices/receiptsSlice";
+import writeOffsReducer from "./slices/writeOffsSlice";
+import feedbackReducer from "./slices/feedbackSlice";
 
-const reducer = combineReducers({
-  reviewsReducer,
-  roomsReducer,
-  bookingsReducer,
-  adminReducer
-})
 export const store = configureStore({
-  reducer
-})
+  reducer: {
+    adminReducer,
+    productsReducer,
+    categoriesReducer,
+    suppliersReducer,
+    receiptsReducer,
+    writeOffsReducer,
+    feedbackReducer,
+  },
+});
 
-export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

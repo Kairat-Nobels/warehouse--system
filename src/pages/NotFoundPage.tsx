@@ -2,30 +2,45 @@ import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
   return (
-    <div className="not-found-page min-h-screen flex flex-col items-center justify-center bg-white">
-      <div className="text-center">
-        <h1 className="text-6xl font-bold text-red-500 mb-4">404</h1>
-        <h2 className="text-3xl font-semibold text-gray-800 mb-6">
-          Page Not Found
+    <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">
+      <div className="text-center max-w-xl">
+
+        {/* 404 */}
+        <h1 className="text-7xl md:text-8xl font-extrabold text-cyan-400">
+          404
+        </h1>
+
+        {/* TITLE */}
+        <h2 className="text-3xl md:text-4xl font-bold text-white mt-4">
+          Страница не найдена
         </h2>
-        <p className="text-gray-600 text-lg mb-8">
-          Oops! The page you're looking for doesn't exist. It might have been
-          moved or deleted.
+
+        {/* TEXT */}
+        <p className="text-slate-400 text-lg mt-4 leading-relaxed">
+          Похоже, такой страницы не существует или она была перемещена.
         </p>
-        <div className="flex justify-center items-center space-x-4">
+
+        {/* BUTTONS */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
           <Link
             to="/"
-            className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors duration-300"
+            className="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-600 text-white font-semibold transition"
           >
-            Вернуться на главную
+            На главную
           </Link>
+
           <Link
             to="/login"
-            className="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition-colors duration-300"
+            className="px-6 py-3 rounded-xl border border-slate-700 hover:bg-slate-800 text-white font-semibold transition"
           >
             Войти
           </Link>
         </div>
+
+        {/* FOOTER TEXT */}
+        <p className="text-xs text-slate-500 mt-8">
+          SCLAD-UCHET • Система учета товаров
+        </p>
       </div>
     </div>
   );

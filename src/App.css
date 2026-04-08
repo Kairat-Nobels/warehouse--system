@@ -132,3 +132,110 @@ a {
   color: #fff !important;
   background-color: none !important;
 }
+
+.rs-table {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+.rs-table-cell,
+.rs-table-cell-group,
+.rs-table-row,
+.rs-table-row-header,
+.rs-table-scrollbar,
+.rs-table-body-row-wrapper {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+.rs-table-cell {
+  border-color: #1e293b !important;
+}
+
+.rs-table-row-header .rs-table-cell {
+  background: #111827 !important;
+  color: #cbd5e1 !important;
+  font-weight: 600 !important;
+}
+
+.rs-table-row:not(.rs-table-row-header):hover .rs-table-cell {
+  background: #172554 !important;
+}
+
+.rs-table-cell-content {
+  color: #e2e8f0 !important;
+}
+
+.rs-table-bordered .rs-table-cell {
+  border-color: #1e293b !important;
+}
+
+.rs-table-word-wrap .rs-table-cell-content {
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+.rs-btn-subtle {
+  color: #e2e8f0 !important;
+}
+
+.rs-btn-subtle:hover {
+  background: #1e293b !important;
+}
+
+.rs-tag-green {
+  background: rgba(34, 197, 94, 0.16) !important;
+  color: #4ade80 !important;
+  border: 1px solid rgba(34, 197, 94, 0.25) !important;
+}
+
+.rs-tag-orange {
+  background: rgba(251, 191, 36, 0.16) !important;
+  color: #fbbf24 !important;
+  border: 1px solid rgba(251, 191, 36, 0.25) !important;
+}
+
+.rs-tag-red {
+  background: rgba(239, 68, 68, 0.16) !important;
+  color: #f87171 !important;
+  border: 1px solid rgba(239, 68, 68, 0.25) !important;
+}
+
+.rs-table-cell-header .rs-table-cell-content {
+  color: #cbd5e1 !important;
+}
+
+.rs-table-row-header {
+  box-shadow: none !important;
+}
+
+.rs-table-row-header .rs-table-cell:first-child {
+  border-top-left-radius: 16px;
+}
+
+.rs-table-row-header .rs-table-cell:last-child {
+  border-top-right-radius: 16px;
+}
+
+.rs-table-row .rs-table-cell:last-child {
+  border-right-color: #1e293b !important;
+}
+
+.rs-table-row .rs-table-cell:first-child {
+  border-left-color: #1e293b !important;
+}
+
+.rs-modal-content {
+  background-color: #fdfdfd !important;
+  /* color: #e2e8f0 !important; */
+}
+
+.product-dark-modal .rs-modal-content {
+  background-color: rgb(15, 23, 42) !important;
+}
+
+.product-dark-modal .rs-modal-title {
+  color: #e2e8f0 !important;
+}

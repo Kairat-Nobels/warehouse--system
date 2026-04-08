@@ -16,7 +16,6 @@ import AdminRoute from "./components/AdminRoute";
 import AdminDashboardMain from "./pages/AdminDashboardMain";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
-// import DashboardPage from "./pages/DashboardPage";
 // import ProductsPage from "./pages/ProductsPage";
 // import CategoriesPage from "./pages/CategoriesPage";
 // import SuppliersPage from "./pages/SuppliersPage";
@@ -25,6 +24,14 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 // import OperationsHistoryPage from "./pages/OperationsHistoryPage";
 
 import "./App.css";
+import DashboardPage from "./pages/DashboardPage";
+import ProductsPage from "./pages/ProductsPage";
+import CategoriesPage from "./pages/CategoriesPage";
+import SuppliersPage from "./pages/SuppliersPage";
+import FeedbackPage from "./pages/FeedbackPage";
+import ReceiptsPage from "./pages/ReceiptsPage";
+import WriteOffsPage from "./pages/WriteOffsPage";
+import OperationsHistoryPage from "./pages/OperationsHistoryPage";
 
 function App() {
   const location = useLocation();
@@ -52,7 +59,7 @@ function App() {
               </AdminRoute>
             }
           >
-            {/* <Route
+            <Route
               index
               element={
                 <AdminRoute>
@@ -85,6 +92,14 @@ function App() {
               }
             />
             <Route
+              path="feedback"
+              element={
+                <AdminRoute>
+                  <FeedbackPage />
+                </AdminRoute>
+              }
+            />
+            <Route
               path="receipts"
               element={
                 <AdminRoute>
@@ -107,7 +122,7 @@ function App() {
                   <OperationsHistoryPage />
                 </AdminRoute>
               }
-            /> */}
+            />
           </Route>
 
           {/* Not Found */}

@@ -1,77 +1,83 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
-import { adminApi } from '../../api/api';
-
-interface AdminCredentials {
-  login: string;
-  password: string;
-}
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { usersApi } from "../../api/api";
 
 interface AdminState {
-  valid: boolean;
+  admin: any | null;
+  isAuth: boolean;
+  isLoading: boolean;
+  error: string | null;
 }
 
-interface AdminUser {
-  login: string;
-  password: string | number;
-}
+const savedAdmin = localStorage.getItem("admin");
 
 const initialState: AdminState = {
-  valid: localStorage.getItem('admin') === 'true',
+  admin: savedAdmin ? JSON.parse(savedAdmin) : null,
+  isAuth: !!savedAdmin,
+  isLoading: false,
+  error: null,
 };
 
-export const loginAdmin = createAsyncThunk<boolean, AdminCredentials, { rejectValue: string }>(
-  'admin/login',
-  async ({ login, password }, { rejectWithValue }) => {
+export const loginAdmin = createAsyncThunk(
+  "admin/loginAdmin",
+  async (
+    { login, password }: { login: string; password: string },
+    thunkAPI
+  ) => {
     try {
-      const res = await fetch(adminApi);
-      const data: AdminUser[] = await res.json();
+      const { data } = await axios.get(usersApi);
 
-      const user = data.find(
-        u => u.login === login && u.password.toString() === password
+      const foundAdmin = data.find(
+        (user: any) => user.login === login && user.password === password
       );
 
-      if (!user) {
-        toast.error('Неверный логин или пароль');
-        return rejectWithValue('Неверные данные');
+      if (!foundAdmin) {
+        return thunkAPI.rejectWithValue("Неверный логин или пароль");
       }
 
-      toast.success('Успешный вход!');
-      localStorage.setItem('admin', 'true');
-      return true;
-    } catch (err: any) {
-      toast.error('Ошибка сервера');
-      return rejectWithValue(err.message || 'Неизвестная ошибка');
+      return foundAdmin;
+    } catch (error: any) {
+      console.log(error);
+      return thunkAPI.rejectWithValue("Ошибка авторизации");
     }
   }
 );
 
-export const outAdmin = createAsyncThunk<boolean>(
-  'admin/logout',
-  async () => {
-    localStorage.removeItem('admin');
-    toast.success('Вы вышли из системы');
-    return false;
-  }
-);
-
 const adminSlice = createSlice({
-  name: 'admin',
+  name: "admin",
   initialState,
-  reducers: {},
-  extraReducers: builder => {
+  reducers: {
+    outAdmin: (state) => {
+      state.admin = null;
+      state.isAuth = false;
+      state.error = null;
+      localStorage.removeItem("admin");
+      toast.info("Вы вышли из системы");
+    },
+  },
+  extraReducers: (builder) => {
     builder
-      .addCase(loginAdmin.fulfilled, (state, action: PayloadAction<boolean>) => {
-        state.valid = action.payload;
+      .addCase(loginAdmin.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
       })
-      .addCase(loginAdmin.rejected, (state) => {
-        state.valid = false;
+      .addCase(loginAdmin.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.admin = action.payload;
+        state.isAuth = true;
+        localStorage.setItem("admin", JSON.stringify(action.payload));
+        toast.success("Вход выполнен успешно");
       })
-      .addCase(outAdmin.fulfilled, (state, action: PayloadAction<boolean>) => {
-        state.valid = action.payload;
+      .addCase(loginAdmin.rejected, (state, action: any) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.isAuth = false;
+        toast.error(action.payload || "Ошибка авторизации");
       });
   },
 });
 
+export const { outAdmin } = adminSlice.actions;
 export default adminSlice.reducer;

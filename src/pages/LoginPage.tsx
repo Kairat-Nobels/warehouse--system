@@ -13,65 +13,80 @@ const LoginPage = () => {
   const { valid } = useSelector((state: any) => state.adminReducer);
 
   useEffect(() => {
-    // если админ уже авторизован (в localStorage), сразу отправляем в админку
-    if (localStorage.getItem("admin") === "true" || valid) {
+    if (localStorage.getItem("admin") || valid) {
       navigate("/admin");
     }
   }, [valid, navigate]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
       const resultAction = await dispatch(loginAdmin(formData));
+
       if (loginAdmin.fulfilled.match(resultAction)) {
         toast.success("Вы вошли как администратор");
         navigate("/admin");
       } else {
         toast.error("Неверный логин или пароль");
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (err) {
-      toast.error("Что - то пошло не так");
+    } catch {
+      toast.error("Что-то пошло не так");
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-pink-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Авторизоваться</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <input
-              type="email"
-              name="login"
-              placeholder="Email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-              onChange={handleChange}
-              required
-            />
-          </div>
+    <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">
+      <div className="w-full max-w-md rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-lg">
+
+        {/* TITLE */}
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-white">
+            Вход в систему
+          </h2>
+          <p className="text-slate-400 mt-2 text-sm">
+            Администрирование склада
+          </p>
+        </div>
+
+        {/* FORM */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+
+          <input
+            type="email"
+            name="login"
+            placeholder="Email"
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Пароль"
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
+          />
+
           <button
             type="submit"
-            disabled={formData.login === "" || formData.password === ""}
-            className={`w-full px-4 py-2 text-white rounded-xl bg-blue-500 hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            disabled={!formData.login || !formData.password}
+            className="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-600 text-white font-semibold transition disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Войти
           </button>
         </form>
+
+        {/* FOOTER */}
+        <p className="text-center text-xs text-slate-500 mt-6">
+          Доступ только для администратора
+        </p>
       </div>
     </div>
   );
